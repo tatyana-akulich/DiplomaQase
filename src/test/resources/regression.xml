@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test Suit">
+    <listeners>
+        <listener class-name="by.teachmeskills.util.TestListener"/>
+        <listener class-name="by.teachmeskills.util.AnnotationTransformer"/>
+    </listeners>
+    <test name="Filter">
+        <classes>
+            <class name="by.teachmeskills.ui.FilterTest"/>
+        </classes>
+    </test>
+    <test name="Search">
+        <classes>
+            <class name="by.teachmeskills.ui.SearchTest"/>
+        </classes>
+    </test>
+    <test name="Status">
+        <classes>
+            <class name="by.teachmeskills.ui.StatusTest">
+                <methods>
+                    <include name="testStatusFilterSettings()"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Create defect">
+        <classes>
+            <class name="by.teachmeskills.ui.CrudTest">
+                <methods>
+                    <include name="createDefectWithObligatoryFields()"/>
+                </methods>
+            </class></classes>
+    </test>
+</suite>
