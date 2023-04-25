@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="API Test Suit" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="by.teachmeskills.util.TestListener"/>
+        <listener class-name="by.teachmeskills.util.AnnotationTransformer"/>
+    </listeners>
+    <test name="Get tests">
+        <classes>
+            <class name="by.teachmeskills.api.GetAllDefectsTest">
+            </class>
+            <class name="by.teachmeskills.api.GetSpecificDefectTest"/>
+        </classes>
+    </test>
+    <test name="Post tests">
+        <classes>
+            <class name="by.teachmeskills.api.PostDefectTest"/>
+        </classes>
+    </test>
+    <test name="Delete tests">
+        <classes>
+            <class name="by.teachmeskills.api.DeleteDefectTest"/>
+        </classes>
+    </test>
+    <test name="Update tests">
+        <classes>
+            <class name="by.teachmeskills.api.UpdateDefectTest"/>
+            <class name="by.teachmeskills.api.ResolveDefectTest"/>
+            <class name="by.teachmeskills.api.UpdateDefectStatusTest"/>
+        </classes>
+    </test>
+</suite>
