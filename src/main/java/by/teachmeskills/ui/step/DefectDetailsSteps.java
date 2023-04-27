@@ -17,7 +17,7 @@ public class DefectDetailsSteps {
     }
 
     public Defect getDefect(String title) {
-        defectsPage.openPageNumber("1").openDefectsDetails(title);
+        defectsPage.openPageNumber(1).openDefectsDetails(title);
         Defect actualDefect = Defect.builder()
                 .defectTitle(defectDetailsPage.getTitle())
                 .actualResult(defectDetailsPage.getDescription())

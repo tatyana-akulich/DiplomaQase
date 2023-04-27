@@ -30,13 +30,13 @@ public class PaginationTest extends BaseTest {
                     .as("After click on navigation arrow page content should change")
                     .isNotEqualTo(secondPageElements);
 
-            defects.openPageNumber("1");
+            defects.openPageNumber(1);
             currentPageElements = defects.getDefectsNamesFromPage();
             assertThat(currentPageElements)
                     .as("After click on another page number content should change")
                     .isNotEqualTo(secondPageElements);
 
-            defects.openPageNumber(String.valueOf(amountOfPages));
+            defects.openPageNumber(amountOfPages);
             assertThat(defects.isNavigationElementDisabled("›"))
                     .as("On last page forward arrow should be disabled")
                     .isTrue();

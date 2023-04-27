@@ -34,7 +34,7 @@ public class DefectsSteps {
 
     public List<String> getStatusFilterResult(List<String> statuses) {
         return defectsPage.selectStatuses(statuses)
-                .openPageNumber("1")
+                .openPageNumber(1)
                 .getAllDefectsTitles();
     }
 
@@ -42,7 +42,7 @@ public class DefectsSteps {
         List<String> filteredBySeverityList = defectsPage.clickAddFilter()
                 .chooseFilterType(Filter.SEVERITY.getText())
                 .chooseSeverityTypes(statuses)
-                .openPageNumber("1")
+                .openPageNumber(1)
                 .getAllDefectsTitles();
         defectsPage.closeFilter(Filter.SEVERITY.getText());
         return filteredBySeverityList;

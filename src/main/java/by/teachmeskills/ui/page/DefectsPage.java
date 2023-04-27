@@ -77,10 +77,13 @@ public class DefectsPage implements BasePage {
     public DefectsPage openPageNumber(String pageNumber) {
         if (getAmountOfPages() > 1) {
             $x((String.format(PAGE_NUMBER_LOCATOR, pageNumber))).shouldBe(enabled).click();
-//            $x((String.format(PAGE_NUMBER_LOCATOR, pageNumber))).shouldBe(focused);
             $$(ALL_DEFECTS_TITLES).shouldBe(CollectionCondition.sizeNotEqual(0));
         }
         return this;
+    }
+
+    public DefectsPage openPageNumber(int pageNumber) {
+        return openPageNumber(String.valueOf(pageNumber));
     }
 
     public int getDefectsPage(String title) {
@@ -260,13 +263,13 @@ public class DefectsPage implements BasePage {
         return $x(String.format(DEFECT_STATUS_LOCATOR, title)).shouldBe(visible).getAttribute("aria-label");
     }
 
-    public String getDefectsSeverity(String title) {
+    private String getDefectsSeverity(String title) {
         return $x(String.format(DEFECT_SEVERITY_LOCATOR, title)).shouldBe(visible).getText();
     }
 
     public DefectsPage passToFirstOrOnlyPage() {
         if (getAmountOfPages() > 1) {
-            openPageNumber("1");
+            openPageNumber(1);
         }
         return this;
     }
@@ -297,6 +300,38 @@ public class DefectsPage implements BasePage {
     public DefectsPage closeFilter(String filter) {
         $x(String.format(CLOSE_FILTER_BUTTON, filter)).shouldBe(enabled).click();
         return this;
+    }
+
+    public List<String> getDefectsByFilter(List<String> allDefectTitles, List<String> filters, String filterType) {
+        List<String> expectedResult = new ArrayList<>();
+        int pageNumber = 1;
+        int titleNumber = 1;
+        for (String title : allDefectTitles) {
+            if (titleNumber > 10) {
+                pageNumber++;
+                openPageNumber(pageNumber);
+                titleNumber = 1;
+            }
+            for (String filter : filters
+            ) {
+                switch (filterType) {
+                    case "severity": {
+                        if (getDefectsSeverity(title).equals(filter)) {
+                            expectedResult.add(title);
+                            break;
+                        }
+                    }
+                    case "status": {
+                        if (getDefectsStatus(title).equals(filter)) {
+                            expectedResult.add(title);
+                        }
+                    }
+                }
+
+            }
+            titleNumber++;
+        }
+        return expectedResult;
     }
 
     private boolean isElementDisplayedWithDuration(By locator) {

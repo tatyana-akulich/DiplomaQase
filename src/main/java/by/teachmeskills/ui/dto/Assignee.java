@@ -25,7 +25,8 @@ public enum Assignee {
             case "Katerina_Zharkaya": {
                 return Assignee.KATERINA_ZHARSKAYA;
             }
-            default: return null;
+            default:
+                throw new IllegalArgumentException();
         }
     }
 }

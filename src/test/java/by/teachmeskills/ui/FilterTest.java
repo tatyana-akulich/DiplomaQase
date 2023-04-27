@@ -31,28 +31,12 @@ public class FilterTest extends BaseTest {
 
     @Test(dataProvider = "severityForFilter")
     public void testSeverityFilter(String[] severityForFilter) {
-        int pageNumber = 1;
-        int titleNumber = 1;
         defectsPage.clearStatusFilter("severity").passToFirstOrOnlyPage();
         List<String> allDefectTitles = defectsPage.getAllDefectsTitles();
-        List<String> expectedResult = new ArrayList<>();
+        List<String> expectedResult;
         List<String> severityForFilters = Arrays.asList(severityForFilter);
         defectsPage.passToFirstOrOnlyPage();
-        for (String title : allDefectTitles
-        ) {
-            if (titleNumber > 10) {
-                pageNumber++;
-                defectsPage.openPageNumber(String.valueOf(pageNumber));
-                titleNumber = 1;
-            }
-            for (String severity : severityForFilters
-            ) {
-                if (defectsPage.getDefectsSeverity(title).equals(severity)) {
-                    expectedResult.add(title);
-                }
-            }
-            titleNumber++;
-        }
+        expectedResult = defectsPage.getDefectsByFilter(allDefectTitles, severityForFilters, "severity");
 
         List<String> actualResult = new DefectsSteps().getSeverityFilterResult(severityForFilters);
         assertThat(actualResult)

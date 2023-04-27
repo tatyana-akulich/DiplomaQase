@@ -9,7 +9,7 @@
         <classes>
             <class name="by.teachmeskills.ui.StatusTest">
                 <methods>
-                    <exclude name="testStatusFilterSettings()"></exclude>
+                    <exclude name="testStatusFilterSettings()"/>
                 </methods>
             </class>
         </classes>

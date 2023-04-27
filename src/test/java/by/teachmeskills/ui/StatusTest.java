@@ -74,28 +74,12 @@ public class StatusTest extends BaseTest {
 
     @Test(dataProvider = "statusesForFilter")
     public void testStatusFilterResults(String[] statusesForFilter) {
-        int pageNumber = 1;
-        int titleNumber = 1;
         defectsPage.clearStatusFilter("status").passToFirstOrOnlyPage();
         List<String> allDefectTitles = defectsPage.getAllDefectsTitles();
-        List<String> expectedResult = new ArrayList<>();
+        List<String> expectedResult;
         List<String> statusesForFilters = Arrays.asList(statusesForFilter);
         defectsPage.passToFirstOrOnlyPage();
-        for (String title : allDefectTitles
-        ) {
-            if (titleNumber > 10) {
-                pageNumber++;
-                defectsPage.openPageNumber(String.valueOf(pageNumber));
-                titleNumber = 1;
-            }
-            for (String status : statusesForFilter
-            ) {
-                if (defectsPage.getDefectsStatus(title).equals(status)) {
-                    expectedResult.add(title);
-                }
-            }
-            titleNumber++;
-        }
+        expectedResult = defectsPage.getDefectsByFilter(allDefectTitles, statusesForFilters, "status");
 
         List<String> actualResult = new DefectsSteps().getStatusFilterResult(statusesForFilters);
         assertThat(actualResult)

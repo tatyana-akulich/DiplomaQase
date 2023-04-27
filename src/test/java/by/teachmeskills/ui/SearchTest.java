@@ -52,25 +52,23 @@ public class SearchTest extends BaseTest {
                 .as("Expected and actual search results should be equal")
                 .isEqualTo(expectedResult);
     }
+
     @Test
-    public void testSearchStatus(){//failed test
+    public void testSearchStatus() {//failed test
         DefectsPage defectsPage = new DefectsPage();
         List<String> expectedResult = new ArrayList<>();
         List<String> actualResult = new ArrayList<>();
         String statusForSearch = "";
 
-        for (String title : allTitles
-        ) {
+        for (String title : allTitles) {
             if (title.toLowerCase().contains(statusForSearch.trim().toLowerCase())) {
                 expectedResult.add(title);
             }
         }
-
-
     }
 
     @AfterClass
-    public void signOut(){
+    public void signOut() {
         new Header().signOut();
     }
 }

@@ -103,7 +103,7 @@ public class CrudTest extends BaseTest {
         DefectsPage shareLane = new DefectsSteps().openDefectsPage(projectName);
         String id = shareLane.getDefectId(defectTitle);
         int pageNumber = shareLane.getDefectsPage(defectTitle);
-        shareLane.openPageNumber(String.valueOf(pageNumber));
+        shareLane.openPageNumber(pageNumber);
         shareLane = new DefectsSteps().deleteDefectWithoutConfirm(defectTitle);
         assertThat(shareLane.isDeleteApprovalMessageDisplayed())
                 .as("After removal delete approval message should be displayed")
