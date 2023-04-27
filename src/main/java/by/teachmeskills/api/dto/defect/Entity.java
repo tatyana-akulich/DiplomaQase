@@ -1,9 +1,12 @@
 package by.teachmeskills.api.dto.defect;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Entity{
+@Data
+public class Entity {
     public int id;
     public String title;
     public String actual_result;

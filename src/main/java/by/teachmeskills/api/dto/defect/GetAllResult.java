@@ -1,7 +1,9 @@
 package by.teachmeskills.api.dto.defect;
 
-import java.util.ArrayList;
+import lombok.Data;
 
+import java.util.ArrayList;
+@Data
 public class GetAllResult {
     public int total;
     public int filtered;

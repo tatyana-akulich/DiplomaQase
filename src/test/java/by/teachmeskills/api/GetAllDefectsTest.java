@@ -6,6 +6,7 @@ import by.teachmeskills.ui.BaseTest;
 import by.teachmeskills.ui.page.Header;
 import by.teachmeskills.ui.step.DefectsSteps;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +17,7 @@ public class GetAllDefectsTest extends BaseTest {
         Response allDefects = new DefectsApiClient().getAllDefects();
         assertThat(allDefects.getStatusCode())
                 .as("Status code should be 200")
-                .isEqualTo(200);
+                .isEqualTo(HttpStatus.SC_OK);
 
         ApiGetAllResponse response = allDefects
                 .then()
@@ -33,6 +34,6 @@ public class GetAllDefectsTest extends BaseTest {
         new Header().signOut();
         assertThat(expectedAmountOfDefects)
                 .as("Expected amount of defects should be equal to total value")
-                .isEqualTo(response.result.total);
+                .isEqualTo(response.getResult().getTotal());
     }
 }

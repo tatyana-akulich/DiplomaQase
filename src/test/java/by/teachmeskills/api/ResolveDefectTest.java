@@ -4,43 +4,54 @@ import by.teachmeskills.api.client.DefectsApiClient;
 import by.teachmeskills.api.dto.defect.ApiPostDeleteUpdateResponse;
 import by.teachmeskills.ui.BaseTest;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResolveDefectTest extends BaseTest {
+    private int defectId;
+    private Response response;
+
     @Test
-    public void testResolveDefect(){
-        String defectId = createDefectThroughApi();
-        Response response = new DefectsApiClient().resolveDefectById(defectId);
+    public void testResolveDefectCode200() {
+        defectId = createDefectThroughApi();
+        response = new DefectsApiClient().resolveDefectById(defectId);
         assertThat(response.getStatusCode())
                 .as("Status code should be 200")
-                .isEqualTo(200);
+                .isEqualTo(HttpStatus.SC_OK);
         ApiPostDeleteUpdateResponse postDeleteResponse = response
                 .then()
                 .extract()
                 .body()
                 .as(ApiPostDeleteUpdateResponse.class);
 
-        assertThat(postDeleteResponse.status)
+        assertThat(postDeleteResponse.isStatus())
                 .as("Status should be true")
                 .isEqualTo(true);
 
-        assertThat(postDeleteResponse.result.id)
+        assertThat(postDeleteResponse.getResult().getId())
                 .as("Actual id should be equal to sent in request")
-                .isEqualTo(Integer.parseInt(defectId));
+                .isEqualTo(defectId);
 
-        new DefectsApiClient().deleteDefectById(String.valueOf(postDeleteResponse.result.id));
+        new DefectsApiClient().deleteDefectById(defectId);
+    }
 
-        defectId = "1000";
+    @Test
+    public void testResolveDefectCode404() {
+        defectId = 1000;
         response = new DefectsApiClient().resolveDefectById(defectId);
         assertThat(response.getStatusCode())
                 .as("Status code should be 404 - not found")
-                .isEqualTo(404);
+                .isEqualTo(HttpStatus.SC_NOT_FOUND);
+    }
 
-        defectId = "0";
+    @Test
+    public void testResolveDefectCode400() {
+        defectId = 0;
         response = new DefectsApiClient().resolveDefectById(defectId);
         assertThat(response.getStatusCode())
                 .as("Status code should be 400 - bad request, id should be not less than 1")
-                .isEqualTo(400);
+                .isEqualTo(HttpStatus.SC_BAD_REQUEST);
     }
 }
