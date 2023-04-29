@@ -196,13 +196,13 @@ public class DefectsPage implements BasePage {
         return $x(String.format(STATUS_TYPE_LOCATOR, status)).isSelected();
     }
 
-    private DefectsPage selectStatusOrFilter(String element) {
-        $x(String.format(STATUS_TYPE_FOR_CLICK, element)).shouldBe(enabled).click();
+    public DefectsPage clickOnStatusChoice() {
+        $(STATUS_BUTTON).shouldBe(enabled).click();
         return this;
     }
 
-    private DefectsPage clickOnStatusChoice() {
-        $(STATUS_BUTTON).shouldBe(enabled).click();
+    private DefectsPage selectStatusOrFilter(String element) {
+        $x(String.format(STATUS_TYPE_FOR_CLICK, element)).shouldBe(enabled).click();
         return this;
     }
 
@@ -224,6 +224,7 @@ public class DefectsPage implements BasePage {
     }
 
     public DefectsPage clickSelectAllStatuses() {
+        clickOnStatusChoice();
         $(SELECT_ALL_STATUS).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }
