@@ -6,11 +6,10 @@ pipeline {
     }
 
 parameters {
- //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
- //booleanParam(defaultValue: true, name: 'HEADLESS')
- //choice(choices: ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket'],
- //description: 'Choose a product to check, if it is displayed in catalog', name: 'ProductName')
- choice(choices: ['smoke.xml', 'regression.xml', 'testng.xml'], description: 'Choose xml file to run tests', name: 'XMLfile')
+
+ string (defaultValue: 'ShareLane', description: 'Enter project name', name: 'projectName')
+
+ choice (choices: ['smoke.xml', 'regression.xml', 'negative.xml', 'api.xml'], description: 'Choose xml file to run tests', name: 'XMLfile')
 }
 
     stages {
