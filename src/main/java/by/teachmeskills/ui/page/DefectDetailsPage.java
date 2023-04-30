@@ -2,7 +2,6 @@ package by.teachmeskills.ui.page;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;

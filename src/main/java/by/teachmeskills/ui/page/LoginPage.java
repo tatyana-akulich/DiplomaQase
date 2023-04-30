@@ -3,7 +3,6 @@ package by.teachmeskills.ui.page;
 import by.teachmeskills.util.PropertiesLoader;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-
 import java.time.Duration;
 import java.util.Properties;
 
@@ -15,13 +14,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Log4j2
 public class LoginPage implements BasePage {
-    public LoginPage() {
-    }
-
     public final static By EMAIL = By.id("inputEmail");
     public final static By PASSWORD = By.id("inputPassword");
     private final static By LOGIN_BUTTON = By.id("btnLogin");
     private static final By TITLE = By.id("Symbols");
+    
+    public LoginPage() {
+    }
 
     public LoginPage openPage() {
         log.info("Opening login page");

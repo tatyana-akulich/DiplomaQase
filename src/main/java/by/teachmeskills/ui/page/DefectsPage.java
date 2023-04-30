@@ -6,7 +6,6 @@ import by.teachmeskills.ui.dto.Status;
 import com.codeborne.selenide.CollectionCondition;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -300,6 +299,7 @@ public class DefectsPage implements BasePage {
                 selectStatus(status);
             }
         }
+
         log.info("Closing of severity filter");
         if (filterName.equals("severity")) {
             closeFilter(Filter.SEVERITY.getText());

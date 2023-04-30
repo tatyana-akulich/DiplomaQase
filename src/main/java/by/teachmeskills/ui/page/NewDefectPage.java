@@ -3,15 +3,14 @@ package by.teachmeskills.ui.page;
 import by.teachmeskills.ui.dto.Defect;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-
 import java.util.List;
-
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 @Log4j2
+
 public class NewDefectPage implements BasePage {
 
     private static final By TITLE_CREATE_DEFECT = By.xpath("//h1[text()= 'Create defect']");
@@ -32,7 +31,7 @@ public class NewDefectPage implements BasePage {
 
 
     public DefectsPage clickCreateDefect() {
-        log.info("Clicking create defect button");
+       log.info("Clicking create defect button");
         $(BUTTON_CREATE_DEFECT).shouldBe(visible, enabled).click();
         return new DefectsPage();
     }
