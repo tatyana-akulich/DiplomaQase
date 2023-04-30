@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class FilterTest extends BaseTest {
 
     @Test(dataProvider = "severityForFilter")
     public void testSeverityFilter(String[] severityForFilter) {
-        defectsPage.clearStatusFilter("severity").passToFirstOrOnlyPage();
+        defectsPage.clearFilter("severity").passToFirstOrOnlyPage();
         List<String> allDefectTitles = defectsPage.getAllDefectsTitles();
         List<String> expectedResult;
         List<String> severityForFilters = Arrays.asList(severityForFilter);

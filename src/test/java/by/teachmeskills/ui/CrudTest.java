@@ -1,5 +1,7 @@
 package by.teachmeskills.ui;
 
+import by.teachmeskills.api.client.DefectsApiClient;
+import by.teachmeskills.api.dto.defect.models.PostDefectModel;
 import by.teachmeskills.ui.dto.Assignee;
 import by.teachmeskills.ui.dto.Defect;
 import by.teachmeskills.ui.dto.Milestone;
@@ -10,6 +12,7 @@ import by.teachmeskills.ui.step.DefectsSteps;
 import by.teachmeskills.ui.step.LoginSteps;
 import by.teachmeskills.ui.step.NewDefectSteps;
 import com.github.javafaker.Faker;
+import io.restassured.response.Response;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -100,6 +103,12 @@ public class CrudTest extends BaseTest {
 
     @Test(dataProvider = "defectsForRemoval")
     public void deleteDefect(String defectTitle) {
+        PostDefectModel model = PostDefectModel.builder()
+                .title("test")
+                .actual_result(new Faker().name().title())
+                .severity(4)
+                .build();
+        new DefectsApiClient().postDefect(model);
         DefectsPage shareLane = new DefectsSteps().openDefectsPage(projectName);
         String id = shareLane.getDefectId(defectTitle);
         int pageNumber = shareLane.getDefectsPage(defectTitle);

@@ -6,7 +6,6 @@ import by.teachmeskills.ui.page.Header;
 import by.teachmeskills.ui.step.DefectsSteps;
 import org.testng.annotations.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class StatusTest extends BaseTest {
                 .as("Status filter should be enabled on defects page")
                 .isTrue();
 
-        defectsPage.clearStatusFilter("status").selectStatus(Status.OPEN.getText());
+        defectsPage.clearFilter("status").selectStatus(Status.OPEN.getText());
         assertThat(defectsPage.getStatusFilterText())
                 .as("Type of status should be visible after 'Status:'")
                 .contains(Status.OPEN.getText());
@@ -74,7 +73,7 @@ public class StatusTest extends BaseTest {
 
     @Test(dataProvider = "statusesForFilter")
     public void testStatusFilterResults(String[] statusesForFilter) {
-        defectsPage.clearStatusFilter("status").passToFirstOrOnlyPage();
+        defectsPage.clearFilter("status").passToFirstOrOnlyPage();
         List<String> allDefectTitles = defectsPage.getAllDefectsTitles();
         List<String> expectedResult;
         List<String> statusesForFilters = Arrays.asList(statusesForFilter);

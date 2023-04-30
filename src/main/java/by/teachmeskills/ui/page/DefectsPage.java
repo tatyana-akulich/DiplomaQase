@@ -243,7 +243,7 @@ public class DefectsPage implements BasePage {
         return this;
     }
 
-    private DefectsPage clickOnStatusChoice() {
+    public DefectsPage clickOnStatusChoice() {
         log.info("Clicking on status button");
         $(STATUS_BUTTON).shouldBe(enabled).click();
         return this;
@@ -276,7 +276,7 @@ public class DefectsPage implements BasePage {
         return this;
     }
 
-    public DefectsPage clearStatusFilter(String filterName) {
+    public DefectsPage clearFilter(String filterName) {
         List<String> filterTypes = null;
         switch (filterName) {
             case "status": {

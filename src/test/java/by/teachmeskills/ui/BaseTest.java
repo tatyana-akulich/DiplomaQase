@@ -14,10 +14,10 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     protected String projectName = "ShareLane";
 
-    @BeforeMethod
+    /*@BeforeMethod
     void setUp(ITestContext testContext) {
         WebDriver driver = WebDriverRunner.getWebDriver();
-        testContext.setAttribute("driver", driver);}
+        testContext.setAttribute("driver", driver);}*/
 
     protected int createDefectThroughApi() {
         PostDefectModel model = PostDefectModel.builder()
