@@ -272,6 +272,7 @@ public class DefectsPage implements BasePage {
 
     public DefectsPage clickSelectAllStatuses() {
         log.info("Clicking on select all statuses");
+        clickOnStatusChoice();
         $(SELECT_ALL_STATUS).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }
