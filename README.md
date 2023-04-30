@@ -1,3 +1,17 @@
+<h1>Qase/Defects</h1>
+<h2>Description</h2>
+<p>Qase is a test case management systems, providing such base functionality as:</p>
+<li>creating of projects</li>
+<li>adding of test cases and suites</li>
+<li>creating of test plans and running them</li>
+<li>creating of defects as a result of tests running</li>
+<li>adding of tags, milestones.</li>
+<p></p>
+<p>In defects section it is possible to:</p>
+<li>add and delete defects</li>
+<li>filter defects by status, assignee, severity, author, date of creating, milestones, tags</li>
+<li>search defects by title</li>
+<li>edit defects - change their parameters or status</li>
 <li>add new tags</li>
 <li>attach documents to defects</li>
 <li>comment defects</li>
