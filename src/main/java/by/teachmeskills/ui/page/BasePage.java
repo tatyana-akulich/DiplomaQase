@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public interface BasePage {
-    By LOADING = By.xpath("//span[text()='Loading...']");
     default BasePage openPage() {
         return null;
     }
