@@ -6,14 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public interface BasePage {
-    By LOADING = By.xpath("//span[text()='Loading...']");
     default BasePage openPage() {
         return null;
     }
