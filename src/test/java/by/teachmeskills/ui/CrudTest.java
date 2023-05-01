@@ -103,12 +103,6 @@ public class CrudTest extends BaseTest {
 
     @Test(dataProvider = "defectsForRemoval")
     public void deleteDefect(String defectTitle) {
-        PostDefectModel model = PostDefectModel.builder()
-                .title("test")
-                .actual_result(new Faker().name().title())
-                .severity(4)
-                .build();
-        new DefectsApiClient().postDefect(model);
         DefectsPage shareLane = new DefectsSteps().openDefectsPage(projectName);
         String id = shareLane.getDefectId(defectTitle);
         int pageNumber = shareLane.getDefectsPage(defectTitle);
