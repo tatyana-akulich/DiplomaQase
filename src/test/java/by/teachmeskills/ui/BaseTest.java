@@ -4,20 +4,16 @@ import by.teachmeskills.api.client.DefectsApiClient;
 import by.teachmeskills.api.dto.defect.ApiPostDeleteUpdateResponse;
 import by.teachmeskills.api.dto.defect.models.PostDefectModel;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import io.restassured.response.Response;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     protected String projectName = "ShareLane";
 
-    @BeforeMethod
+    /*@BeforeMethod
     void setUp(ITestContext testContext) {
         WebDriver driver = WebDriverRunner.getWebDriver();
-        testContext.setAttribute("driver", driver);}
+        testContext.setAttribute("driver", driver);}*/
 
     protected int createDefectThroughApi() {
         PostDefectModel model = PostDefectModel.builder()
