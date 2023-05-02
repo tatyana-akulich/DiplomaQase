@@ -6,6 +6,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
@@ -14,6 +16,7 @@ public class TestListener implements ITestListener {
 
     private byte[] takeScreenshot(ITestResult result) {
         ITestContext context = result.getTestContext();
+        context.setAttribute("driver", getWebDriver());
         try {
             WebDriver driver = (WebDriver) context.getAttribute("driver");
             if (driver != null) {

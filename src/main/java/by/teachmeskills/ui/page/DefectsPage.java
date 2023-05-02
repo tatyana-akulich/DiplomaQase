@@ -6,6 +6,7 @@ import by.teachmeskills.ui.dto.Status;
 import com.codeborne.selenide.CollectionCondition;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -194,8 +195,10 @@ public class DefectsPage implements BasePage {
         log.info("Sending keys {} to search line", text);
         $(SEARCH_INPUT).shouldBe(visible, enabled).clear();
         $(SEARCH_INPUT).shouldBe(visible, enabled).sendKeys(text);
-        log.error("Waiting for loading of search results");
-        waitForLoading();
+        if (!isUnsuccessfulSearchMessageDisplayed()) {
+            log.error("Waiting for loading of search results");
+            waitForLoading();
+        }
         return this;
     }
 

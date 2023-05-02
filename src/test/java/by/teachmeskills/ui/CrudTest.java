@@ -1,18 +1,18 @@
 package by.teachmeskills.ui;
 
-import by.teachmeskills.api.client.DefectsApiClient;
-import by.teachmeskills.api.dto.defect.models.PostDefectModel;
 import by.teachmeskills.ui.dto.Assignee;
 import by.teachmeskills.ui.dto.Defect;
 import by.teachmeskills.ui.dto.Milestone;
 import by.teachmeskills.ui.dto.Severity;
-import by.teachmeskills.ui.page.*;
+import by.teachmeskills.ui.page.DefectsPage;
+import by.teachmeskills.ui.page.Header;
+import by.teachmeskills.ui.page.NewDefectPage;
+import by.teachmeskills.ui.page.ProjectMenuPage;
 import by.teachmeskills.ui.step.DefectDetailsSteps;
 import by.teachmeskills.ui.step.DefectsSteps;
 import by.teachmeskills.ui.step.LoginSteps;
 import by.teachmeskills.ui.step.NewDefectSteps;
 import com.github.javafaker.Faker;
-import io.restassured.response.Response;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
